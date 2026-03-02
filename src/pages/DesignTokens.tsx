@@ -25,7 +25,7 @@ const colorTokens = [
     swatches: [
       { name: 'tertiary', bg: 'bg-m3-tertiary', text: 'text-m3-on-tertiary', value: '#7D5260' },
       { name: 'on-tertiary', bg: 'bg-m3-on-tertiary', text: 'text-m3-tertiary', value: '#FFFFFF', border: true },
-      { name: 'tertiary-container', bg: 'bg-m3-tertiary-container', text: 'text-m3-on-tertiary-container', value: '#FFD5E4 },
+      { name: 'tertiary-container', bg: 'bg-m3-tertiary-container', text: 'text-m3-on-tertiary-container', value: '#FFD8E4' },
       { name: 'on-tertiary-container', bg: 'bg-m3-on-tertiary-container', text: 'text-m3-tertiary-container', value: '#31111D' },
     ],
   },
@@ -182,7 +182,7 @@ export default function DesignTokens() {
               </code>
               <div className="flex-1 flex items-center gap-3">
                 <div
-                  className="h-ê rounded-m3-xs bg-m3-primary/80 transition-all duration-300"
+                  className="h-ï¿½ rounded-m3-xs bg-m3-primary/80 transition-all duration-300"
                   style={{ width }}
                 />
                 <span className="text-xs text-m3-on-surface-variant shrink-0">{value}</span>
