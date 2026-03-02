@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Layout } from '@/components/layout/Layout'
 
 // Overview pages
@@ -26,7 +26,7 @@ import TooltipDoc from '@/pages/TooltipDoc'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           {/* Overview */}
@@ -63,7 +63,7 @@ function App() {
           <Route path="/components/text-field" element={<TextFieldDoc />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
