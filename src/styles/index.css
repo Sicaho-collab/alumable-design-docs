@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ============================================
+   Material 3 Design Tokens
+   Based on Material 3 Design Kit (Community)
+   ============================================ */
+
+@theme {
+  /* ── Primary ── */
+  --color-m3-primary: #6750A4;
+  --color-m3-on-primary: #FFFFFF;
+  --color-m3-primary-container: #EADDFF;
+  --color-m3-on-primary-container: #21005D;
+
+  /* ── Secondary ── */
+  --color-m3-secondary: #625B71;
+  --color-m3-on-secondary: #FFFFFF;
+  --color-m3-secondary-container: #E8DEF8;
+  --color-m3-on-secondary-container: #1D192B;
+
+  /* ── Tertiary ── */
+  --color-m3-tertiary: #7D5260;
+  --color-m3-on-tertiary: #FFFFFF;
+  --color-m3-tertiary-container: #FFD8E4;
+  --color-m3-on-tertiary-container: #31111D;
+
+  /* ── Error ── */
+  --color-m3-error: #B3261E;
+  --color-m3-on-error: #FFFFFF;
+  --color-m3-error-container: #F9DEDC;
+  --color-m3-on-error-container: #410E0B;
+
+  /* ── Surface ── */
+  --color-m3-surface: #FEF7FF;
+  --color-m3-surface-dim: #DED8E1;
+  --color-m3-surface-bright: #FEF7FF;
+  --color-m3-surface-container-lowest: #FFFFFF;
+  --color-m3-surface-container-low: #F7F2FA;
+  --color-m3-surface-container: #F3EDF7;
+  --color-m3-surface-container-high: #ECE6F0;
+  --color-m3-surface-container-highest: #E6E0E9;
+  --color-m3-on-surface: #1D1B20;
+  --color-m3-on-surface-variant: #49454F;
+  --color-m3-outline: #79747E;
+  --color-m3-outline-variant: #CAC4D0;
+  --color-m3-inverse-surface: #322F35;
+  --color-m3-inverse-on-surface: #F5EFF7;
+  --color-m3-inverse-primary: #D0BCFF;
+  --color-m3-scrim: #000000;
+  --color-m3-shadow: #000000;
+
+  /* ── Elevation shadows ── */
+  --shadow-m3-1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --shadow-m3-2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --shadow-m3-3: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-m3-4: 0px 6px 10px 4px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.3);
+  --shadow-m3-5: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
+
+  /* ── Typography scale ── */
+  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
+
+  /* ── Border Radius (Shape) ── */
+  --radius-m3-none: 0px;
+  --radius-m3-xs: 4px;
+  --radius-m3-sm: 8px;
+  --radius-m3-md: 12px;
+  --radius-m3-lg: 16px;
+  --radius-m3-xl: 28px;
+  --radius-m3-full: 9999px;
+
+  /* ── Spacing ── */
+  --spacing-m3-0: 0px;
+  --spacing-m3-1: 4px;
+  --spacing-m3-2: 8px;
+  --spacing-m3-3: 12px;
+  --spacing-m3-4: 16px;
+  --spacing-m3-5: 20px;
+  --spacing-m3-6: 24px;
+  --spacing-m3-8: 32px;
+  --spacing-m3-10: 40px;
+  --spacing-m3-12: 48px;
+  --spacing-m3-16: 64px;
+}
+
+/* ── Base styles ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-m3-on-surface);
+  background-color: var(--color-m3-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-m3-outline-variant);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-m3-outline);
+}
+
+/* ── Code blocks ── */
+pre {
+  background: var(--color-m3-surface-container-highest);
+  border-radius: var(--radius-m3-md);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875em;
+}
+
+:not(pre) > code {
+  background: var(--color-m3-surface-container-high);
+  padding: 2px 6px;
+  border-radius: var(--radius-m3-xs);
+  color: var(--color-m3-primary);
+}
