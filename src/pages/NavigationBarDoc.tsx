@@ -5,13 +5,13 @@ import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { CodeBlock } from '@/components/docs/CodeBlock'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { NavigationBar } from '@/components/ui/navigation-bar'
-import { Home, Search, Bookmark, Person } from 'lucide-react'
+import { Home, Search, Bookmark, User } from 'lucide-react'
 
 const navItems = [
   { label: 'Home', icon: <Home className="size-6" /> },
   { label: 'Search', icon: <Search className="size-6" />, badge: 3 },
   { label: 'Saved', icon: <Bookmark className="size-6" /> },
-  { label: 'Profile', icon: <Person className="size-6" /> },
+  { label: 'Profile', icon: <User className="size-6" /> },
 ]
 
 export default function NavigationBarDoc() {
@@ -23,7 +23,7 @@ export default function NavigationBarDoc() {
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">
           <NavigationBar items={navItems} activeIndex={active} onSelect={setActive} />
         </ComponentPreview>
-        <CodeBlock>{`<NavigationBar items={items} activeIndex={0} onSelect={setActive} />`}</CodeBlock>
+        <CodeBlock code={`<NavigationBar items={items} activeIndex={0} onSelect={setActive} />`} />
       </Section>
       <Section title="Props">
         <PropsTable props={[
