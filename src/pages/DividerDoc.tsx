@@ -19,9 +19,9 @@ export default function DividerDoc() {
             <Divider inset="middle" />
           </div>
         </ComponentPreview>
-        <CodeBlock>{`<Divider />
+        <CodeBlock code={`<Divider />
 <Divider inset="left" />
-<Divider inset="middle" />`}</CodeBlock>
+<Divider inset="middle" />`} />
       </Section>
       <Section title="Vertical">
         <ComponentPreview>
@@ -31,7 +31,7 @@ export default function DividerDoc() {
             <span className="text-sm text-m3-on-surface">Right</span>
           </div>
         </ComponentPreview>
-        <CodeBlock>{`<Divider orientation="vertical" />`}</CodeBlock>
+        <CodeBlock code={`<Divider orientation="vertical" />`} />
       </Section>
     </div>
   )
