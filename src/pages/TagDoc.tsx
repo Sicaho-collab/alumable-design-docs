@@ -16,7 +16,6 @@ export default function TagDoc() {
         title="Tag"
         description="Tags are compact elements that represent attributes, metadata, or categories. They can be removable or static."
       />
-
       <Section title="Variants">
         <ComponentPreview>
           <div className="flex flex-wrap gap-2">
@@ -26,12 +25,11 @@ export default function TagDoc() {
             <Tag variant="surface">Surface</Tag>
           </div>
         </ComponentPreview>
-        <CodeBlock>{`<Tag variant="filled">Filled</Tag>
+        <CodeBlock code={`<Tag variant="filled">Filled</Tag>
 <Tag variant="tonal">Tonal</Tag>
 <Tag variant="outlined">Outlined</Tag>
-<Tag variant="surface">Surface</Tag>`}</CodeBlock>
+<Tag variant="surface">Surface</Tag>`} />
       </Section>
-
       <Section title="Sizes">
         <ComponentPreview>
           <div className="flex flex-wrap items-center gap-2">
@@ -41,7 +39,6 @@ export default function TagDoc() {
           </div>
         </ComponentPreview>
       </Section>
-
       <Section title="With Icon">
         <ComponentPreview>
           <div className="flex flex-wrap gap-2">
@@ -50,7 +47,6 @@ export default function TagDoc() {
           </div>
         </ComponentPreview>
       </Section>
-
       <Section title="Removable Tags">
         <ComponentPreview>
           <div className="flex flex-wrap gap-2">
@@ -61,14 +57,13 @@ export default function TagDoc() {
             ))}
           </div>
         </ComponentPreview>
-        <CodeBlock>{`<Tag variant="tonal" onRemove={() => removeTag(tag)}>{tag}</Tag>`}</CodeBlock>
+        <CodeBlock code={`<Tag variant="tonal" onRemove={() => removeTag(tag)}>{tag}</Tag>`} />
       </Section>
-
       <Section title="Props">
         <PropsTable
           props={[
-            { name: 'variant', type: "'filled' | 'tonal' | 'outlined' | 'surface'", defaultValue: "'tonal'", description: 'Visual style' },
-            { name: 'size', type: "'sm' | 'md' | 'lg'", defaultValue: "'md'", description: 'Tag size' },
+            { name: 'variant', type: "'filled' | 'tonal' | 'outlined' | 'surface'", default: "'tonal'", description: 'Visual style' },
+            { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Tag size' },
             { name: 'onRemove', type: '() => void', description: 'If provided, renders a remove button' },
             { name: 'icon', type: 'ReactNode', description: 'Leading icon element' },
           ]}
