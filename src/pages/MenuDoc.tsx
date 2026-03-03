@@ -3,10 +3,9 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { CodeBlock } from '@/components/docs/CodeBlock'
-import { PropsTable } from '@/components/docs/PropsTable'
 import { Menu, MenuTrigger, MenuContent, MenuItem, MenuCheckboxItem, MenuSeparator, MenuLabel, MenuSub, MenuSubTrigger, MenuSubContent } from '@/components/ui/menu'
 import { Button } from '@/components/ui/button'
-import { Copy, Trash, Edit, ChevronRight, Star, Share } from 'lucide-react'
+import { Copy, Trash, Edit, Star, Share } from 'lucide-react'
 
 export default function MenuDoc() {
   const [checked, setChecked] = useState(false)
@@ -28,16 +27,16 @@ export default function MenuDoc() {
             </MenuContent>
           </Menu>
         </ComponentPreview>
-        <CodeBlock>{`<Menu>
+        <CodeBlock code={`<Menu>
   <MenuTrigger asChild><Button>Open Menu</Button></MenuTrigger>
   <MenuContent>
     <MenuItem leading={<Edit />}>Edit</MenuItem>
     <MenuSeparator />
     <MenuItem leading={<Trash />}>Delete</MenuItem>
   </MenuContent>
-</Menu>`}</CodeBlock>
+</Menu>`} />
       </Section>
-      <Section title="With Labels & Checkboxes">
+      <Section title="With Labels and Checkboxes">
         <ComponentPreview>
           <Menu>
             <MenuTrigger asChild><Button variant="tonal">Options</Button></MenuTrigger>
