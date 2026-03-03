@@ -1,3 +1,4 @@
+import React from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
@@ -18,7 +19,7 @@ export default function TopAppBarDoc() {
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">
           <TopAppBar title="Page Title" leading={iconBtn(<ArrowLeft className="size-6" />)} trailing={<>{iconBtn(<Search className="size-6" />)}{iconBtn(<MoreVertical className="size-6" />)}</>} />
         </ComponentPreview>
-        <CodeBlock>{`<TopAppBar title="Page Title" variant="small" leading={<BackButton />} trailing={<Actions />} />`}</CodeBlock>
+        <CodeBlock code={`<TopAppBar title="Page Title" variant="small" leading={<BackButton />} trailing={<Actions />} />`} />
       </Section>
       <Section title="Center Aligned">
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">
@@ -38,10 +39,10 @@ export default function TopAppBarDoc() {
       <Section title="Props">
         <PropsTable props={[
           { name: 'title', type: 'string', required: true, description: 'Bar title text' },
-          { name: 'variant', type: "'small' | 'center-aligned' | 'medium' | 'large'", defaultValue: "'small'", description: 'Size variant' },
+          { name: 'variant', type: "'small' | 'center-aligned' | 'medium' | 'large'", default: "'small'", description: 'Size variant' },
           { name: 'leading', type: 'ReactNode', description: 'Leading icon button (e.g. back, menu)' },
           { name: 'trailing', type: 'ReactNode', description: 'Trailing action icons' },
-          { name: 'scrolled', type: 'boolean', defaultValue: 'false', description: 'Adds shadow when content is scrolled' },
+          { name: 'scrolled', type: 'boolean', default: 'false', description: 'Adds shadow when content is scrolled' },
         ]} />
       </Section>
     </div>
