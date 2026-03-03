@@ -16,29 +16,26 @@ export default function PaginationDoc() {
         title="Pagination"
         description="Pagination allows users to navigate between pages of content, showing their current position and total page count."
       />
-
       <Section title="Basic Pagination">
         <ComponentPreview>
           <Pagination page={page} totalPages={10} onPageChange={setPage} />
         </ComponentPreview>
-        <CodeBlock>{`<Pagination page={1} totalPages={10} onPageChange={setPage} />`}</CodeBlock>
+        <CodeBlock code={`<Pagination page={1} totalPages={10} onPageChange={setPage} />`} />
       </Section>
-
-      <Section title="With First/Last Buttons">
+      <Section title="With First and Last Buttons">
         <ComponentPreview>
           <Pagination page={page2} totalPages={20} onPageChange={setPage2} showFirstLast siblingCount={2} />
         </ComponentPreview>
-        <CodeBlock>{`<Pagination page={5} totalPages={20} onPageChange={setPage} showFirstLast siblingCount={2} />`}</CodeBlock>
+        <CodeBlock code={`<Pagination page={5} totalPages={20} onPageChange={setPage} showFirstLast siblingCount={2} />`} />
       </Section>
-
       <Section title="Props">
         <PropsTable
           props={[
             { name: 'page', type: 'number', required: true, description: 'Current page (1-based)' },
             { name: 'totalPages', type: 'number', required: true, description: 'Total number of pages' },
             { name: 'onPageChange', type: '(page: number) => void', required: true, description: 'Page change callback' },
-            { name: 'showFirstLast', type: 'boolean', defaultValue: 'false', description: 'Show first/last page buttons' },
-            { name: 'siblingCount', type: 'number', defaultValue: '1', description: 'Pages shown on each side of current' },
+            { name: 'showFirstLast', type: 'boolean', default: 'false', description: 'Show first/last page buttons' },
+            { name: 'siblingCount', type: 'number', default: '1', description: 'Pages shown on each side of current' },
           ]}
         />
       </Section>
