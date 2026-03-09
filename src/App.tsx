@@ -51,6 +51,10 @@ import StepperDoc from '@/pages/StepperDoc'
 import PaginationDoc from '@/pages/PaginationDoc'
 import TagDoc from '@/pages/TagDoc'
 
+// Custom
+import ButtonColorfulDoc from '@/pages/ButtonColorfulDoc'
+import ChatInputDoc from '@/pages/ChatInputDoc'
+
 function App() {
   return (
     <HashRouter>
@@ -105,6 +109,10 @@ function App() {
           <Route path="/components/stepper" element={<StepperDoc />} />
           <Route path="/components/pagination" element={<PaginationDoc />} />
           <Route path="/components/tag" element={<TagDoc />} />
+
+          {/* Custom */}
+          <Route path="/custom/button-colorful" element={<ButtonColorfulDoc />} />
+          <Route path="/custom/chat-input" element={<ChatInputDoc />} />
         </Route>
       </Routes>
     </HashRouter>
