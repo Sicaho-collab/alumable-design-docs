@@ -38,6 +38,7 @@ import {
   ListIcon,
   LayoutPanelLeft,
   PanelBottomOpen,
+  CalendarDays,
 } from 'lucide-react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 
@@ -100,6 +101,7 @@ const navSections: NavSection[] = [
     title: 'Selection',
     items: [
       { label: 'Checkbox', path: '/components/checkbox', icon: <CheckSquare className="size-4" /> },
+      { label: 'Date Picker', path: '/components/date-picker', icon: <CalendarDays className="size-4" /> },
       { label: 'Radio Button', path: '/components/radio', icon: <CircleDot className="size-4" /> },
       { label: 'Slider', path: '/components/slider', icon: <SlidersHorizontal className="size-4" /> },
       { label: 'Switch', path: '/components/switch', icon: <ToggleRight className="size-4" /> },
