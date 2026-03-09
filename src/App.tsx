@@ -34,6 +34,7 @@ import CheckboxDoc from '@/pages/CheckboxDoc'
 import RadioDoc from '@/pages/RadioDoc'
 import SwitchDoc from '@/pages/SwitchDoc'
 import SliderDoc from '@/pages/SliderDoc'
+import DatePickerDoc from '@/pages/DatePickerDoc'
 
 // Text Input
 import TextFieldDoc from '@/pages/TextFieldDoc'
@@ -92,6 +93,7 @@ function App() {
           <Route path="/components/radio" element={<RadioDoc />} />
           <Route path="/components/switch" element={<SwitchDoc />} />
           <Route path="/components/slider" element={<SliderDoc />} />
+          <Route path="/components/date-picker" element={<DatePickerDoc />} />
 
           {/* Text Input */}
           <Route path="/components/text-field" element={<TextFieldDoc />} />
