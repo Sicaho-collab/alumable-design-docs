@@ -38,6 +38,8 @@ import {
   ListIcon,
   LayoutPanelLeft,
   PanelBottomOpen,
+  Sparkles,
+  MessageSquareText,
 } from 'lucide-react'
 import * as Collapsible from '@radix-ui/react-collapsible'
 
@@ -127,6 +129,13 @@ const navSections: NavSection[] = [
       { label: 'Pagination', path: '/components/pagination', icon: <ChevronsLeftRight className="size-4" /> },
       { label: 'Stepper', path: '/components/stepper', icon: <GitCommitHorizontal className="size-4" /> },
       { label: 'Tag', path: '/components/tag', icon: <Tag className="size-4" /> },
+    ],
+  },
+  {
+    title: 'Custom',
+    items: [
+      { label: 'Button Colorful', path: '/custom/button-colorful', icon: <Sparkles className="size-4" /> },
+      { label: 'Chat Input', path: '/custom/chat-input', icon: <MessageSquareText className="size-4" /> },
     ],
   },
 ]
