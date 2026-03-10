@@ -43,6 +43,7 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
       trailingIcon,
       multiline = false,
       rows = 4,
+      placeholder,
       ...props
     },
     ref
@@ -52,6 +53,10 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
 
     // Multiline always uses filled style
     const effectiveVariant = multiline ? 'filled' : variant
+
+    // When a real placeholder is provided alongside a label, the label should
+    // already be in its shrunk/top position so the placeholder is visible.
+    const hasExplicitPlaceholder = !!placeholder
 
     return (
       <div className={cn(textFieldVariants({ variant: effectiveVariant }), className)}>
@@ -79,11 +84,18 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
                 rows={rows}
                 aria-describedby={supportingText || errorText ? supportId : undefined}
                 aria-invalid={error}
+                placeholder={hasExplicitPlaceholder ? placeholder : label}
                 className={cn(
-                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base resize-vertical px-4 pt-6 pb-2 placeholder-transparent leading-relaxed',
+                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base resize-vertical px-4 pb-2 leading-relaxed',
+                  // When label is present and at top, need top padding for the label
+                  // When no label, less top padding needed
+                  label ? 'pt-6' : 'pt-3',
+                  // Only hide placeholder when we're using it as a label trigger (no explicit placeholder)
+                  !hasExplicitPlaceholder && 'placeholder-transparent',
+                  // Show real placeholder in muted color
+                  hasExplicitPlaceholder && 'placeholder-m3-on-surface-variant/60',
                   leadingIcon && 'pl-2'
                 )}
-                placeholder={label}
                 {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
               />
             ) : (
@@ -92,12 +104,14 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
                 id={inputId}
                 aria-describedby={supportingText || errorText ? supportId : undefined}
                 aria-invalid={error}
+                placeholder={hasExplicitPlaceholder ? placeholder : label}
                 className={cn(
-                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base h-14 px-4 pt-5 pb-1 placeholder-transparent',
+                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base h-14 px-4 pt-5 pb-1',
+                  !hasExplicitPlaceholder && 'placeholder-transparent',
+                  hasExplicitPlaceholder && 'placeholder-m3-on-surface-variant/60',
                   leadingIcon && 'pl-2',
                   trailingIcon && 'pr-2'
                 )}
-                placeholder={label}
                 {...props}
               />
             )}
@@ -105,19 +119,45 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
               <label
                 htmlFor={inputId}
                 className={cn(
+                  'absolute pointer-events-none transition-all duration-200 origin-top-left',
                   multiline
                     ? cn(
-                        'absolute left-4 right-4 top-0 pt-1.5 pb-0.5 z-[1] bg-m3-surface-container-highest text-m3-on-surface-variant text-base transition-all duration-200 pointer-events-none origin-top-left',
-                        'peer-focus:text-xs peer-focus:text-m3-primary peer-[:not(:placeholder-shown)]:text-xs'
+                        // Multiline filled label
+                        hasExplicitPlaceholder
+                          // With explicit placeholder: label is ALWAYS shrunk at top
+                          ? 'left-4 right-4 top-0 pt-1 pb-0.5 z-[1] bg-m3-surface-container-highest text-xs text-m3-on-surface-variant'
+                          // Without explicit placeholder: label starts inside, moves to top on focus/has-value
+                          : cn(
+                              'left-4 right-4 text-m3-on-surface-variant text-base',
+                              // Default: inside the field at first-line position
+                              'top-4',
+                              // Focused: shrink and move to top with opaque bg
+                              'peer-focus:top-0 peer-focus:pt-1 peer-focus:pb-0.5 peer-focus:text-xs peer-focus:z-[1] peer-focus:bg-m3-surface-container-highest',
+                              // Has value: same as focused position
+                              'peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:pt-1 peer-[:not(:placeholder-shown)]:pb-0.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:z-[1] peer-[:not(:placeholder-shown)]:bg-m3-surface-container-highest'
+                            )
                       )
                     : cn(
-                        'absolute left-4 top-1/2 -translate-y-1/2 text-m3-on-surface-variant text-base transition-all duration-200 pointer-events-none origin-top-left',
-                        effectiveVariant === 'outlined'
-                          ? 'peer-focus:-top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-m3-primary peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1'
-                          : 'peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-focus:text-m3-primary peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs',
+                        // Single-line label
+                        'text-m3-on-surface-variant text-base',
+                        hasExplicitPlaceholder
+                          // With explicit placeholder: always shrunk at top
+                          ? effectiveVariant === 'outlined'
+                            ? 'left-4 -top-0 -translate-y-1/2 text-xs bg-white px-1'
+                            : 'left-4 top-1 translate-y-0 text-xs'
+                          // Without explicit placeholder: animate on focus/has-value
+                          : cn(
+                              'left-4 top-1/2 -translate-y-1/2',
+                              effectiveVariant === 'outlined'
+                                ? 'peer-focus:-top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1'
+                                : 'peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs'
+                            ),
                         leadingIcon && 'left-2'
                       ),
-                  error && 'peer-focus:text-m3-error'
+                  // Color states
+                  error
+                    ? 'text-m3-error peer-focus:text-m3-error'
+                    : 'peer-focus:text-m3-primary'
                 )}
               >
                 {label}

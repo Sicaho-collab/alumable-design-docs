@@ -154,7 +154,7 @@ export default function TextFieldDoc() {
       {/* --- Multiline --- */}
       <Section
         title="Multiline"
-        description="Multiline text fields use the filled variant style for longer-form content. The filled container background ensures scrolled content does not overlap the floating label."
+        description="Multiline text fields always use the filled variant. The label animates from inside the field to the top on focus or when filled — matching Material's filled textarea behavior. When a placeholder is provided, the label stays shrunk at the top so the placeholder text is visible."
       >
         <ComponentPreview title="Filled multiline" className="flex-col items-stretch gap-6">
           <div className="max-w-sm">
