@@ -51,6 +51,18 @@ const textFieldProps: PropDef[] = [
     description: 'Icon element rendered at the end (right) of the input.',
   },
   {
+    name: 'multiline',
+    type: 'boolean',
+    default: 'false',
+    description: 'When true, renders a textarea instead of a single-line input.',
+  },
+  {
+    name: 'rows',
+    type: 'number',
+    default: '4',
+    description: 'Number of visible text rows when multiline is true.',
+  },
+  {
     name: '...props',
     type: 'InputHTMLAttributes',
     default: '—',
@@ -134,6 +146,33 @@ export default function TextFieldDoc() {
               variant="outlined"
               type="tel"
               supportingText="Include country code"
+            />
+          </div>
+        </ComponentPreview>
+      </Section>
+
+      {/* --- Multiline --- */}
+      <Section
+        title="Multiline"
+        description="Multiline text fields always use the filled variant. The label animates from inside the field to the top on focus or when filled — matching Material's filled textarea behavior. When a placeholder is provided, the label stays shrunk at the top so the placeholder text is visible."
+      >
+        <ComponentPreview title="Filled multiline" className="flex-col items-stretch gap-6">
+          <div className="max-w-sm">
+            <TextField label="Multiline" multiline rows={4} />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              label="Multiline Placeholder"
+              placeholder="Placeholder"
+              multiline
+            />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              label="Multiline"
+              multiline
+              rows={4}
+              defaultValue="Default Value"
             />
           </div>
         </ComponentPreview>
@@ -226,6 +265,7 @@ export default function TextFieldDoc() {
             'The error state sets aria-invalid="true" on the input so assistive technology can announce the invalid state.',
             'Floating labels animate out of the input area to avoid obscuring user input, maintaining readability.',
             'Icon elements are decorative and hidden from the accessibility tree. Provide meaningful labels through the label prop instead.',
+            'Multiline text fields use a native textarea element. The floating label has an opaque background to prevent scrolling content from overlapping the label text.',
           ]}
         />
       </Section>

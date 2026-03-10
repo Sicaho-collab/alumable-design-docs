@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Calendar, RangeValue } from '@/components/ui/calendar'
+import { Calendar, type RangeValue } from '@/components/ui/calendar'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
@@ -88,7 +88,7 @@ const examplePresets = {
 }
 
 const basicUsageCode = `import { useState } from 'react'
-import { Calendar, RangeValue } from '@/components/ui/calendar'
+import { Calendar, type RangeValue } from '@/components/ui/calendar'
 
 function DateRangeExample() {
   const [date, setDate] = useState<RangeValue | null>(null)
@@ -104,7 +104,7 @@ function DateRangeExample() {
 
 const withPresetsCode = `import { useState } from 'react'
 import { startOfDay, endOfDay, subDays, subMonths } from 'date-fns'
-import { Calendar, RangeValue } from '@/components/ui/calendar'
+import { Calendar, type RangeValue } from '@/components/ui/calendar'
 
 const now = new Date()
 const presets = {
@@ -209,12 +209,16 @@ export default function DatePickerDoc() {
         <PropsTable props={calendarProps} />
       </Section>
 
-      <AccessibilityNote>
-        The calendar popover closes when clicking outside or scrolling/resizing the window. Date inputs
-        accept typed values in <code>MMM dd, yyyy</code> format and time inputs accept <code>HH:mm</code>.
-        Use the Apply button or press Enter to confirm manually typed values. Min/max value constraints
-        visually disable out-of-range days and prevent their selection.
-      </AccessibilityNote>
+      <Section title="Accessibility">
+        <AccessibilityNote
+          items={[
+            'The calendar popover closes when clicking outside or scrolling/resizing the window.',
+            'Date inputs accept typed values in MMM dd, yyyy format and time inputs accept HH:mm.',
+            'Use the Apply button or press Enter to confirm manually typed values.',
+            'Min/max value constraints visually disable out-of-range days and prevent their selection.',
+          ]}
+        />
+      </Section>
     </div>
   )
 }
