@@ -26,9 +26,11 @@ export interface TextFieldProps
   errorText?: string
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
+  multiline?: boolean
+  rows?: number
 }
 
-const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
   (
     {
       className,
@@ -39,6 +41,8 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       errorText,
       leadingIcon,
       trailingIcon,
+      multiline = false,
+      rows = 4,
       ...props
     },
     ref
@@ -46,14 +50,18 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     const inputId = React.useId()
     const supportId = React.useId()
 
+    // Multiline always uses filled style
+    const effectiveVariant = multiline ? 'filled' : variant
+
     return (
-      <div className={cn(textFieldVariants({ variant }), className)}>
+      <div className={cn(textFieldVariants({ variant: effectiveVariant }), className)}>
         <div
           className={cn(
-            'relative flex items-center',
-            variant === 'filled' &&
+            'relative flex',
+            multiline ? 'items-start' : 'items-center',
+            effectiveVariant === 'filled' &&
               'bg-m3-surface-container-highest rounded-t-m3-xs border-b-2 border-m3-on-surface-variant focus-within:border-m3-primary',
-            variant === 'outlined' &&
+            effectiveVariant === 'outlined' &&
               'border border-m3-outline rounded-m3-xs focus-within:border-2 focus-within:border-m3-primary',
             error && 'border-m3-error focus-within:border-m3-error'
           )}
@@ -64,28 +72,51 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             </span>
           )}
           <div className="relative flex-1 min-w-0">
-            <input
-              ref={ref}
-              id={inputId}
-              aria-describedby={supportingText || errorText ? supportId : undefined}
-              aria-invalid={error}
-              className={cn(
-                'peer w-full bg-transparent outline-none text-m3-on-surface text-base h-14 px-4 pt-5 pb-1 placeholder-transparent',
-                leadingIcon && 'pl-2',
-                trailingIcon && 'pr-2'
-              )}
-              placeholder={label}
-              {...props}
-            />
+            {multiline ? (
+              <textarea
+                ref={ref as React.Ref<HTMLTextAreaElement>}
+                id={inputId}
+                rows={rows}
+                aria-describedby={supportingText || errorText ? supportId : undefined}
+                aria-invalid={error}
+                className={cn(
+                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base resize-vertical px-4 pt-6 pb-2 placeholder-transparent leading-relaxed',
+                  leadingIcon && 'pl-2'
+                )}
+                placeholder={label}
+                {...(props as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+              />
+            ) : (
+              <input
+                ref={ref as React.Ref<HTMLInputElement>}
+                id={inputId}
+                aria-describedby={supportingText || errorText ? supportId : undefined}
+                aria-invalid={error}
+                className={cn(
+                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base h-14 px-4 pt-5 pb-1 placeholder-transparent',
+                  leadingIcon && 'pl-2',
+                  trailingIcon && 'pr-2'
+                )}
+                placeholder={label}
+                {...props}
+              />
+            )}
             {label && (
               <label
                 htmlFor={inputId}
                 className={cn(
-                  'absolute left-4 top-1/2 -translate-y-1/2 text-m3-on-surface-variant text-base transition-all duration-200 pointer-events-none origin-top-left',
-                  variant === 'outlined'
-                    ? 'peer-focus:-top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-m3-primary peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1'
-                    : 'peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-focus:text-m3-primary peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs',
-                  leadingIcon && 'left-2',
+                  multiline
+                    ? cn(
+                        'absolute left-4 right-4 top-0 pt-1.5 pb-0.5 z-[1] bg-m3-surface-container-highest text-m3-on-surface-variant text-base transition-all duration-200 pointer-events-none origin-top-left',
+                        'peer-focus:text-xs peer-focus:text-m3-primary peer-[:not(:placeholder-shown)]:text-xs'
+                      )
+                    : cn(
+                        'absolute left-4 top-1/2 -translate-y-1/2 text-m3-on-surface-variant text-base transition-all duration-200 pointer-events-none origin-top-left',
+                        effectiveVariant === 'outlined'
+                          ? 'peer-focus:-top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-m3-primary peer-focus:bg-white peer-focus:px-1 peer-[:not(:placeholder-shown)]:-top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1'
+                          : 'peer-focus:top-1 peer-focus:translate-y-0 peer-focus:text-xs peer-focus:text-m3-primary peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-xs',
+                        leadingIcon && 'left-2'
+                      ),
                   error && 'peer-focus:text-m3-error'
                 )}
               >
@@ -93,7 +124,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
               </label>
             )}
           </div>
-          {trailingIcon && (
+          {!multiline && trailingIcon && (
             <span className="pr-3 text-m3-on-surface-variant [&_svg]:size-5">
               {trailingIcon}
             </span>
