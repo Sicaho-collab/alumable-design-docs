@@ -49,6 +49,7 @@ import DividerDoc from '@/pages/DividerDoc'
 
 // Data display
 import DataTableDoc from '@/pages/DataTableDoc'
+import ContactsTableDoc from '@/pages/ContactsTableDoc'
 import StepperDoc from '@/pages/StepperDoc'
 import PaginationDoc from '@/pages/PaginationDoc'
 import TagDoc from '@/pages/TagDoc'
@@ -110,6 +111,7 @@ function App() {
 
           {/* Data display */}
           <Route path="/components/data-table" element={<DataTableDoc />} />
+          <Route path="/components/contacts-table" element={<ContactsTableDoc />} />
           <Route path="/components/stepper" element={<StepperDoc />} />
           <Route path="/components/pagination" element={<PaginationDoc />} />
           <Route path="/components/tag" element={<TagDoc />} />
