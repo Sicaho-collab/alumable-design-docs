@@ -86,10 +86,8 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
                 aria-invalid={error}
                 placeholder={hasExplicitPlaceholder ? placeholder : label}
                 className={cn(
-                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base resize-vertical px-4 pb-2 leading-relaxed',
-                  // When label is present and at top, need top padding for the label
-                  // When no label, less top padding needed
-                  label ? 'pt-6' : 'pt-3',
+                  'peer w-full bg-transparent outline-none text-m3-on-surface text-base resize-vertical leading-relaxed',
+                  label ? 'px-4 pt-6 pb-4' : 'px-4 pt-4 pb-4',
                   // Only hide placeholder when we're using it as a label trigger (no explicit placeholder)
                   !hasExplicitPlaceholder && 'placeholder-transparent',
                   // Show real placeholder in muted color
@@ -129,8 +127,8 @@ const TextField = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, TextF
                           // Without explicit placeholder: label starts inside, moves to top on focus/has-value
                           : cn(
                               'left-4 right-4 text-m3-on-surface-variant text-base',
-                              // Default: inside the field at first-line position
-                              'top-4',
+                              // Default: inside the field at first-line position (matches pt-6 of textarea)
+                              'top-[18px]',
                               // Focused: shrink and move to top with opaque bg
                               'peer-focus:top-0 peer-focus:pt-1 peer-focus:pb-0.5 peer-focus:text-xs peer-focus:z-[1] peer-focus:bg-m3-surface-container-highest',
                               // Has value: same as focused position
