@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Calendar, type RangeValue } from '@/components/ui/calendar'
+import { DateRangePicker } from '@sicaho-collab/m3-design-system'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
@@ -134,6 +135,39 @@ const horizontalCode = `<Calendar
   onChange={setDate}
 />`
 
+const dateRangePickerProps: PropDef[] = [
+  { name: 'title', type: 'string', default: '"Select dates"', description: 'Card title (card mode only)' },
+  { name: 'description', type: 'string', description: 'Card description text' },
+  { name: 'confirmText', type: 'string', default: '"Confirm"', description: 'Confirm button label' },
+  { name: 'cancelText', type: 'string', default: '"Cancel"', description: 'Cancel button label' },
+  { name: 'initialStartDate', type: 'Date', description: 'Pre-selected start date (uncontrolled)' },
+  { name: 'initialEndDate', type: 'Date', description: 'Pre-selected end date (uncontrolled)' },
+  { name: 'startDate', type: 'Date | null', description: 'Controlled start date' },
+  { name: 'endDate', type: 'Date | null', description: 'Controlled end date' },
+  { name: 'onChange', type: '(range) => void', description: 'Called when dates change (controlled mode)' },
+  { name: 'onConfirm', type: '(range) => void', description: 'Called when confirm button clicked (card mode)' },
+  { name: 'onCancel', type: '() => void', description: 'Called when cancel button clicked (card mode)' },
+  { name: 'inline', type: 'boolean', default: 'false', description: 'Render without card wrapper' },
+]
+
+function DateRangePickerInlineDemo() {
+  const [start, setStart] = useState<Date | null>(null)
+  const [end, setEnd] = useState<Date | null>(null)
+  return (
+    <div className="max-w-sm">
+      <DateRangePicker
+        inline
+        startDate={start}
+        endDate={end}
+        onChange={(range) => {
+          setStart(range.startDate)
+          setEnd(range.endDate)
+        }}
+      />
+    </div>
+  )
+}
+
 export default function DatePickerDoc() {
   const [date, setDate] = useState<RangeValue | null>(null)
   const [dateWithPresets, setDateWithPresets] = useState<RangeValue | null>(null)
@@ -205,8 +239,59 @@ export default function DatePickerDoc() {
         />
       </Section>
 
-      <Section title="API Reference">
+      {/* ─── Date Range Picker (M3 Package) ─── */}
+
+      <Section
+        title="Date Range Picker — Card Mode"
+        description="A standalone M3-styled date range picker with calendar, date display fields, and action buttons. Ideal for scheduling flows."
+      >
+        <ComponentPreview>
+          <DateRangePicker
+            title="Schedule a gig"
+            description="Select start and end dates for the engagement."
+            onConfirm={(range) => alert(`Selected: ${JSON.stringify(range)}`)}
+            onCancel={() => alert('Cancelled')}
+          />
+        </ComponentPreview>
+        <CodeBlock code={`import { DateRangePicker } from '@sicaho-collab/m3-design-system'
+
+<DateRangePicker
+  title="Schedule a gig"
+  description="Select start and end dates."
+  onConfirm={(range) => console.log(range)}
+  onCancel={() => console.log('cancelled')}
+/>`} language="tsx" />
+      </Section>
+
+      <Section
+        title="Date Range Picker — Inline Mode"
+        description="Use inline to embed the calendar directly inside a form card without its own wrapper. Supports controlled state via startDate/endDate/onChange."
+      >
+        <ComponentPreview>
+          <DateRangePickerInlineDemo />
+        </ComponentPreview>
+        <CodeBlock code={`import { DateRangePicker } from '@sicaho-collab/m3-design-system'
+
+const [start, setStart] = useState<Date | null>(null)
+const [end, setEnd] = useState<Date | null>(null)
+
+<DateRangePicker
+  inline
+  startDate={start}
+  endDate={end}
+  onChange={(range) => {
+    setStart(range.startDate)
+    setEnd(range.endDate)
+  }}
+/>`} language="tsx" />
+      </Section>
+
+      <Section title="API Reference — Calendar">
         <PropsTable props={calendarProps} />
+      </Section>
+
+      <Section title="API Reference — DateRangePicker">
+        <PropsTable props={dateRangePickerProps} />
       </Section>
 
       <Section title="Accessibility">
