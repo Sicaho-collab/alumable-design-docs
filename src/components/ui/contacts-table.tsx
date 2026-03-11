@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { motion, useReducedMotion, AnimatePresence } from 'framer-motion'
+import { motion, useReducedMotion, AnimatePresence, type Variants } from 'framer-motion'
 import { Download, ChevronDown, X, Mail, Twitter, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -360,11 +360,11 @@ export function ContactsTable({
     downloadBlob(JSON.stringify(sortedAndFiltered, null, 2), `contacts-${new Date().toISOString().split('T')[0]}.json`, 'application/json;charset=utf-8;')
   }
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     visible: { transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
   }
 
-  const rowVariants = {
+  const rowVariants: Variants = {
     hidden:   { opacity: 0, y: 16, scale: 0.98, filter: 'blur(3px)' },
     visible:  { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transition: { type: 'spring', stiffness: 400, damping: 26, mass: 0.7 } },
     exit:     { opacity: 0, y: -8, transition: { duration: 0.15 } },
