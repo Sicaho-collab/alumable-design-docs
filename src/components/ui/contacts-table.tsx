@@ -501,12 +501,12 @@ export function ContactsTable({
             <AnimatePresence mode="wait">
               <motion.div
                 key={`page-${currentPage}-${filterStrength ?? 'all'}-${sortField ?? 'none'}`}
-                variants={shouldAnimate ? containerVariants : {}}
+                variants={shouldAnimate ? containerVariants : undefined}
                 initial={shouldAnimate ? 'hidden' : 'visible'}
                 animate="visible"
               >
                 {paginatedContacts.map((contact) => (
-                  <motion.div key={contact.id} variants={shouldAnimate ? rowVariants : {}}>
+                  <motion.div key={contact.id} variants={shouldAnimate ? rowVariants : undefined}>
                     <div
                       className={cn(
                         'px-3 py-3 group border-b border-m3-outline-variant/40 transition-colors duration-150',

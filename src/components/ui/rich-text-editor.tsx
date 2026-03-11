@@ -26,7 +26,7 @@ import {
   Quote,
   Minus,
   Link as LinkIcon,
-  LinkOff,
+  Link2Off,
   Undo2,
   Redo2,
 } from 'lucide-react'
@@ -282,7 +282,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ editor }) => {
         disabled={!editor.isActive('link')}
         title="Remove link"
       >
-        <LinkOff className="size-4" />
+        <Link2Off className="size-4" />
       </ToolbarButton>
 
       <ToolbarSeparator />
@@ -382,7 +382,7 @@ export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   React.useEffect(() => {
     if (!editor || value === undefined) return
     if (editor.getHTML() !== value) {
-      editor.commands.setContent(value, false)
+      editor.commands.setContent(value, { emitUpdate: false })
     }
   }, [editor, value])
 
