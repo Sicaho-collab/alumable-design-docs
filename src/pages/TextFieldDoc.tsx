@@ -9,10 +9,22 @@ import { Search, Eye, Mail } from 'lucide-react'
 
 const textFieldProps: PropDef[] = [
   {
+    name: 'variant',
+    type: '"filled" | "outlined"',
+    default: '"filled"',
+    description: 'The visual style variant. Outlined is recommended for most use cases.',
+  },
+  {
     name: 'label',
     type: 'string',
     default: '—',
-    description: 'The floating label text displayed above the input when focused or filled.',
+    description: 'Label text displayed above the input field, always visible regardless of state.',
+  },
+  {
+    name: 'placeholder',
+    type: 'string',
+    default: '—',
+    description: 'Placeholder text shown inside the input when empty.',
   },
   {
     name: 'supportingText',
@@ -24,13 +36,19 @@ const textFieldProps: PropDef[] = [
     name: 'error',
     type: 'boolean',
     default: 'false',
-    description: 'When true, applies error styling (red border) and displays errorText instead of supportingText.',
+    description: 'When true, applies error styling (red border and label) and displays errorText.',
   },
   {
     name: 'errorText',
     type: 'string',
     default: '—',
     description: 'Error message displayed below the input when error is true.',
+  },
+  {
+    name: 'disabled',
+    type: 'boolean',
+    default: 'false',
+    description: 'When true, the field becomes non-interactive with reduced opacity.',
   },
   {
     name: 'leadingIcon',
@@ -64,57 +82,166 @@ const textFieldProps: PropDef[] = [
   },
 ]
 
-const usageCode = `import { TextField } from '@/components/ui/text-field'
-import { Search, Eye } from 'lucide-react'
+const webUsageCode = `import { TextField } from '@alumable/ui-web'
+import { CalendarDays } from 'lucide-react'
 
-{/* Basic */}
-<TextField label="Email" />
+{/* Default */}
+<TextField variant="outlined" label="Full name" placeholder="Enter your name" />
 
-{/* With leading and trailing icons */}
+{/* With leading icon */}
 <TextField
-  label="Search"
-  leadingIcon={<Search />}
-  trailingIcon={<Eye />}
-/>
-
-{/* With supporting text */}
-<TextField
-  label="Password"
-  type="password"
-  supportingText="Must be at least 8 characters"
+  variant="outlined"
+  label="Start date"
+  placeholder="Select start date"
+  leadingIcon={<CalendarDays />}
 />
 
 {/* Error state */}
 <TextField
+  variant="outlined"
   label="Email"
   error
   errorText="Please enter a valid email address"
   value="invalid-email"
-/>`
+/>
+
+{/* Disabled */}
+<TextField variant="outlined" label="Disabled field" disabled value="Cannot edit" />
+
+{/* Multiline */}
+<TextField variant="outlined" label="Description" multiline rows={4} placeholder="Enter details..." />`
+
+const mobileUsageCode = `import { TextField } from '@alumable/ui-mobile'
+import { Ionicons } from '@expo/vector-icons'
+
+{/* Default */}
+<TextField variant="outlined" label="Full name" placeholder="Enter your name" />
+
+{/* With leading icon */}
+<TextField
+  variant="outlined"
+  label="Start date"
+  placeholder="Select start date"
+  leadingIcon={<Ionicons name="calendar-outline" size={20} color="#49454F" />}
+/>
+
+{/* Error state */}
+<TextField
+  variant="outlined"
+  label="Email"
+  error
+  errorText="Please enter a valid email address"
+  value="invalid-email"
+/>
+
+{/* Disabled */}
+<TextField variant="outlined" label="Disabled field" disabled value="Cannot edit" />
+
+{/* Multiline */}
+<TextField variant="outlined" label="Description" multiline numberOfLines={4} />`
 
 export default function TextFieldDoc() {
   return (
     <div className="space-y-12">
       <PageHeader
-        title="Text field"
-        description="Text fields allow users to enter and edit text. They support labels, helper text, icons, and validation states."
+        title="Text Field"
+        description="Text fields allow users to enter and edit text. The label is always displayed above the input. Supports icons, validation states, and multiline input."
         status="stable"
       />
 
-      {/* --- Filled --- */}
+      {/* --- Default --- */}
       <Section
         title="Default"
-        description="Filled text fields have a white background with a bottom border that highlights on focus."
+        description="Standard outlined text field with label above and placeholder inside."
       >
         <ComponentPreview title="Default" className="flex-col items-stretch gap-6">
           <div className="max-w-sm">
-            <TextField label="Full name" />
+            <TextField variant="outlined" label="Full name" placeholder="Enter your name" />
           </div>
           <div className="max-w-sm">
             <TextField
+              variant="outlined"
               label="Email address"
-              type="email"
+              placeholder="you@example.com"
               supportingText="We will not share your email"
+            />
+          </div>
+        </ComponentPreview>
+      </Section>
+
+      {/* --- With Icons --- */}
+      <Section
+        title="With icons"
+        description="Leading and trailing icons provide additional context. Commonly used in date pickers and search fields."
+      >
+        <ComponentPreview title="Icons" className="flex-col items-stretch gap-6">
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Search"
+              placeholder="Search..."
+              leadingIcon={<Search />}
+            />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Email"
+              placeholder="you@example.com"
+              leadingIcon={<Mail />}
+              trailingIcon={<Eye />}
+            />
+          </div>
+        </ComponentPreview>
+      </Section>
+
+      {/* --- Error --- */}
+      <Section
+        title="Error"
+        description="Error state with red border, red label, and error message below the field."
+      >
+        <ComponentPreview title="Error" className="flex-col items-stretch gap-6">
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Email"
+              error
+              errorText="Please enter a valid email address"
+              defaultValue="not-an-email"
+            />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Password"
+              type="password"
+              error
+              errorText="Password must be at least 8 characters"
+            />
+          </div>
+        </ComponentPreview>
+      </Section>
+
+      {/* --- Disabled --- */}
+      <Section
+        title="Disabled"
+        description="Disabled state with reduced opacity. The field is not interactive."
+      >
+        <ComponentPreview title="Disabled" className="flex-col items-stretch gap-6">
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Full name"
+              disabled
+              defaultValue="Jane Doe"
+            />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Email"
+              disabled
+              placeholder="you@example.com"
             />
           </div>
         </ComponentPreview>
@@ -123,88 +250,38 @@ export default function TextFieldDoc() {
       {/* --- Multiline --- */}
       <Section
         title="Multiline"
-        description="Multiline text fields render a textarea. The label animates from inside the field to the top on focus or when filled. When a placeholder is provided, the label stays shrunk at the top so the placeholder text is visible."
+        description="Multiline text fields render a resizable textarea for longer content."
       >
         <ComponentPreview title="Multiline" className="flex-col items-stretch gap-6">
           <div className="max-w-sm">
-            <TextField label="Multiline" multiline rows={4} />
-          </div>
-          <div className="max-w-sm">
             <TextField
-              label="Multiline Placeholder"
-              placeholder="Placeholder"
-              multiline
-            />
-          </div>
-          <div className="max-w-sm">
-            <TextField
-              label="Multiline"
+              variant="outlined"
+              label="Description"
+              placeholder="Enter a description..."
               multiline
               rows={4}
-              defaultValue="Default Value"
+            />
+          </div>
+          <div className="max-w-sm">
+            <TextField
+              variant="outlined"
+              label="Notes"
+              multiline
+              rows={3}
+              defaultValue="Some existing content that can be edited."
             />
           </div>
         </ComponentPreview>
       </Section>
 
-      {/* --- Icons --- */}
-      <Section
-        title="With icons"
-        description="Leading and trailing icons provide additional affordance and context."
-      >
-        <ComponentPreview title="Leading and trailing icons" className="flex-col items-stretch gap-6">
-          <div className="max-w-sm">
-            <TextField
-              label="Search"
-              leadingIcon={<Search />}
-            />
-          </div>
-          <div className="max-w-sm">
-            <TextField
-              label="Email"
-              leadingIcon={<Mail />}
-              trailingIcon={<Eye />}
-            />
-          </div>
-        </ComponentPreview>
+      {/* --- Web Usage --- */}
+      <Section title="Web Usage" description="React + Tailwind">
+        <CodeBlock code={webUsageCode} />
       </Section>
 
-      {/* --- Supporting text --- */}
-      <Section
-        title="Supporting text"
-        description="Helper text provides additional guidance beneath the text field."
-      >
-        <ComponentPreview title="With supporting text" className="flex-col items-stretch gap-6">
-          <div className="max-w-sm">
-            <TextField
-              label="Password"
-              type="password"
-              supportingText="Must be at least 8 characters"
-            />
-          </div>
-        </ComponentPreview>
-      </Section>
-
-      {/* --- Error --- */}
-      <Section
-        title="Error state"
-        description="Error styling highlights validation issues with a red border and error message."
-      >
-        <ComponentPreview title="Error" className="flex-col items-stretch gap-6">
-          <div className="max-w-sm">
-            <TextField
-              label="Email"
-              error
-              errorText="Please enter a valid email address"
-              defaultValue="not-an-email"
-            />
-          </div>
-        </ComponentPreview>
-      </Section>
-
-      {/* --- Usage --- */}
-      <Section title="Usage">
-        <CodeBlock code={usageCode} />
+      {/* --- Mobile Usage --- */}
+      <Section title="Mobile Usage" description="React Native + StyleSheet">
+        <CodeBlock code={mobileUsageCode} />
       </Section>
 
       {/* --- Props --- */}
@@ -217,39 +294,13 @@ export default function TextFieldDoc() {
         <AccessibilityNote
           items={[
             'Each input is linked to its label via a generated id and htmlFor, ensuring screen readers announce the label on focus.',
+            'Labels are always displayed above the input field, ensuring the field name is visible in all states (default, focused, error, disabled).',
             'Supporting text and error text are connected to the input through aria-describedby.',
             'The error state sets aria-invalid="true" on the input so assistive technology can announce the invalid state.',
-            'Floating labels animate out of the input area to avoid obscuring user input, maintaining readability.',
-            'Icon elements are decorative and hidden from the accessibility tree. Provide meaningful labels through the label prop instead.',
-            'Multiline text fields use a native textarea element. The floating label has an opaque background to prevent scrolling content from overlapping the label text.',
+            'The disabled state sets the native disabled attribute, removing the field from the tab order.',
+            'On mobile (React Native), accessibilityLabel and accessibilityState are set automatically from the label and disabled props.',
           ]}
         />
-      </Section>
-
-      {/* --- Responsive --- */}
-      <Section
-        title="Responsive behavior"
-        description="How text fields adapt across breakpoints and form layouts."
-      >
-        <div className="prose prose-sm max-w-none text-m3-on-surface-variant">
-          <ul className="space-y-2 list-disc list-inside text-sm">
-            <li>
-              Text fields expand to fill their container width by default. Use <code className="text-xs bg-m3-surface-container-high px-1 py-0.5 rounded">max-w-*</code> utilities to constrain width in wide layouts.
-            </li>
-            <li>
-              On mobile, use full-width text fields stacked vertically. On desktop, fields can be arranged in multi-column grids.
-            </li>
-            <li>
-              The 56px height (14 * 4px) provides a comfortable touch target on all devices, meeting the 48px minimum recommended by Material Design.
-            </li>
-            <li>
-              Floating labels transition smoothly and remain visible at all viewport sizes, ensuring the field purpose is clear even when scrolled into view.
-            </li>
-            <li>
-              Supporting and error text wraps to multiple lines if needed and does not truncate, ensuring the full message is readable on narrow screens.
-            </li>
-          </ul>
-        </div>
       </Section>
     </div>
   )
