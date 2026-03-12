@@ -62,7 +62,6 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         exit={{ opacity: 0, x: 50, transition: { duration: 0.2 } }}
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
         className={cn(alertVariants({ variant }), className)}
-        {...props}
       >
         {/* Icon strip */}
         <div className={cn(iconVariants({ variant }))}>{ICONS[variant]}</div>

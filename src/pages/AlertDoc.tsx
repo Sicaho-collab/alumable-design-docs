@@ -100,7 +100,7 @@ function AlertDemo() {
         {variants.map((v) => (
           <Button
             key={v}
-            variant={demoVariant === v ? 'default' : 'outline'}
+            variant={demoVariant === v ? 'filled' : 'outlined'}
             onClick={() => {
               setDemoVariant(v)
               setShowAlert(true)
