@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { Pagination } from '@/components/ui/pagination'
 
@@ -20,13 +20,13 @@ export default function PaginationDoc() {
         <ComponentPreview>
           <Pagination page={page} totalPages={10} onPageChange={setPage} />
         </ComponentPreview>
-        <CodeBlock code={`<Pagination page={1} totalPages={10} onPageChange={setPage} />`} />
+        <PlatformUsage webCode={`<Pagination page={1} totalPages={10} onPageChange={setPage} />`} />
       </Section>
       <Section title="With First and Last Buttons">
         <ComponentPreview>
           <Pagination page={page2} totalPages={20} onPageChange={setPage2} showFirstLast siblingCount={2} />
         </ComponentPreview>
-        <CodeBlock code={`<Pagination page={5} totalPages={20} onPageChange={setPage} showFirstLast siblingCount={2} />`} />
+        <PlatformUsage webCode={`<Pagination page={5} totalPages={20} onPageChange={setPage} showFirstLast siblingCount={2} />`} />
       </Section>
       <Section title="Props">
         <PropsTable

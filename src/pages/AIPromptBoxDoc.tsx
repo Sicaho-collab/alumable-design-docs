@@ -108,7 +108,7 @@ export default function AIPromptBoxDoc() {
             )}
           </div>
         </ComponentPreview>
-        <CodeBlock code={usageCode} language="tsx" />
+        <CodeBlock code={usageCode} />
       </Section>
 
       <Section
@@ -120,7 +120,7 @@ export default function AIPromptBoxDoc() {
             <AIPromptBox disabled placeholder="Input disabled..." />
           </div>
         </ComponentPreview>
-        <CodeBlock code={`<AIPromptBox disabled placeholder="Input disabled..." />`} language="tsx" />
+        <CodeBlock code={`<AIPromptBox disabled placeholder="Input disabled..." />`} />
       </Section>
 
       <Section
@@ -132,7 +132,7 @@ export default function AIPromptBoxDoc() {
             <AIPromptBox enableAnimations={false} placeholder="No animations..." />
           </div>
         </ComponentPreview>
-        <CodeBlock code={`<AIPromptBox enableAnimations={false} />`} language="tsx" />
+        <CodeBlock code={`<AIPromptBox enableAnimations={false} />`} />
       </Section>
 
       <Section title="API Reference">

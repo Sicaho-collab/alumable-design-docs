@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { BottomSheet } from '@/components/ui/bottom-sheet'
 import { Button } from '@/components/ui/button'
@@ -25,7 +25,7 @@ export default function BottomSheetDoc() {
             </List>
           </BottomSheet>
         </ComponentPreview>
-        <CodeBlock code={`<BottomSheet open={open} onOpenChange={setOpen} title="Share">
+        <PlatformUsage webCode={`<BottomSheet open={open} onOpenChange={setOpen} title="Share">
   <List>
     <ListItem headline="Copy link" leading={<Link />} />
   </List>

@@ -196,7 +196,7 @@ export default function NavigationDoc() {
                 Content area
               </div>
             </ComponentPreview>
-            <CodeBlock code={webBasicCode} language="tsx" />
+            <CodeBlock code={webBasicCode} />
           </Section>
 
           <Section
@@ -223,7 +223,7 @@ export default function NavigationDoc() {
                 </button>
               </div>
             </ComponentPreview>
-            <CodeBlock code={webExpandedCode} language="tsx" />
+            <CodeBlock code={webExpandedCode} />
           </Section>
 
           <Section
@@ -245,7 +245,7 @@ export default function NavigationDoc() {
                 Content area
               </div>
             </ComponentPreview>
-            <CodeBlock code={webFabCode} language="tsx" />
+            <CodeBlock code={webFabCode} />
           </Section>
 
           <Section
@@ -303,23 +303,18 @@ export default function NavigationDoc() {
             </ComponentPreview>
           </Section>
 
-          <Section title="Web Usage" description="Import from @alumable/ui-web for web applications.">
-            <CodeBlock code={appWebCode} language="tsx" />
-          </Section>
-
-          <Section title="Mobile Usage" description="Import from @alumable/ui-mobile for React Native apps.">
-            <CodeBlock code={appMobileCode} language="tsx" />
-            <div className="mt-4 rounded-m3-sm bg-m3-surface-container-lowest border border-m3-outline-variant p-4 text-sm text-m3-on-surface-variant space-y-2">
-              <p><strong>Mobile implementation notes:</strong></p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Uses <code>StyleSheet.create()</code> only — no Tailwind</li>
-                <li>Imports tokens directly from <code>@alumable/design-tokens</code></li>
-                <li>Minimum 44pt touch targets on all items</li>
-                <li>Same props API as web (<code>items</code>, <code>activeIndex</code>, <code>onSelect</code>)</li>
-                <li>Uses <code>accessibilityRole="tab"</code> and <code>accessibilityState</code> for screen readers</li>
-              </ul>
-            </div>
-          </Section>
+          <CodeBlock code={appWebCode} />
+          <CodeBlock code={appMobileCode} />
+          <div className="mt-4 rounded-m3-sm bg-m3-surface-container-lowest border border-m3-outline-variant p-4 text-sm text-m3-on-surface-variant space-y-2">
+            <p><strong>Mobile implementation notes:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Uses <code>StyleSheet.create()</code> only — no Tailwind</li>
+              <li>Imports tokens directly from <code>@alumable/design-tokens</code></li>
+              <li>Minimum 44pt touch targets on all items</li>
+              <li>Same props API as web (<code>items</code>, <code>activeIndex</code>, <code>onSelect</code>)</li>
+              <li>Uses <code>accessibilityRole="tab"</code> and <code>accessibilityState</code> for screen readers</li>
+            </ul>
+          </div>
 
           <Section title="API Reference — NavigationBar">
             <PropsTable props={navBarProps} />

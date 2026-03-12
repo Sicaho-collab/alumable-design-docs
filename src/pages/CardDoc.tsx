@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 
 const cardProps: PropDef[] = [
@@ -129,12 +129,7 @@ function CardDoc() {
       </Section>
 
       {/* --- Usage --- */}
-      <Section
-        title="Usage"
-        description="Import the Card and its sub-components, then compose them to display structured content."
-      >
-        <CodeBlock code={usageCode} language="tsx" />
-      </Section>
+      <PlatformUsage webCode={usageCode} />
 
       {/* --- Props --- */}
       <Section title="Props" description="Properties accepted by the Card root component.">

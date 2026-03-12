@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { DataTable, type Column } from '@/components/ui/data-table'
 import { Tag } from '@/components/ui/tag'
@@ -69,7 +69,7 @@ export default function DataTableDoc() {
         <ComponentPreview>
           <DataTable columns={columns} data={sorted} sortKey={sortKey} sortDir={sortDir} onSort={handleSort} />
         </ComponentPreview>
-        <CodeBlock code={`<DataTable columns={columns} data={data} sortKey="name" sortDir="asc" onSort={handleSort} />`} />
+        <PlatformUsage webCode={`<DataTable columns={columns} data={data} sortKey="name" sortDir="asc" onSort={handleSort} />`} />
       </Section>
       <Section title="Empty State">
         <ComponentPreview>

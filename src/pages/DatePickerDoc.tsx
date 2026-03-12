@@ -188,7 +188,7 @@ export default function DatePickerDoc() {
         <ComponentPreview noClip className="items-start justify-start">
           <Calendar allowClear value={date} onChange={setDate} />
         </ComponentPreview>
-        <CodeBlock code={basicUsageCode} language="tsx" />
+        <CodeBlock code={basicUsageCode} />
       </Section>
 
       <Section
@@ -203,7 +203,7 @@ export default function DatePickerDoc() {
             presets={examplePresets}
           />
         </ComponentPreview>
-        <CodeBlock code={withPresetsCode} language="tsx" />
+        <CodeBlock code={withPresetsCode} />
       </Section>
 
       <Section
@@ -218,7 +218,7 @@ export default function DatePickerDoc() {
             onChange={setDateHorizontal}
           />
         </ComponentPreview>
-        <CodeBlock code={horizontalCode} language="tsx" />
+        <CodeBlock code={horizontalCode} />
       </Section>
 
       <Section
@@ -233,10 +233,7 @@ export default function DatePickerDoc() {
             onChange={setDateNoTime}
           />
         </ComponentPreview>
-        <CodeBlock
-          code={`<Calendar allowClear showTimeInput={false} value={date} onChange={setDate} />`}
-          language="tsx"
-        />
+        <CodeBlock code={`<Calendar allowClear showTimeInput={false} value={date} onChange={setDate} />`} />
       </Section>
 
       {/* ─── Date Range Picker (M3 Package) ─── */}
@@ -260,7 +257,7 @@ export default function DatePickerDoc() {
   description="Select start and end dates."
   onConfirm={(range) => console.log(range)}
   onCancel={() => console.log('cancelled')}
-/>`} language="tsx" />
+/>`} />
       </Section>
 
       <Section
@@ -283,7 +280,7 @@ const [end, setEnd] = useState<Date | null>(null)
     setStart(range.startDate)
     setEnd(range.endDate)
   }}
-/>`} language="tsx" />
+/>`} />
       </Section>
 
       <Section title="API Reference — Calendar">

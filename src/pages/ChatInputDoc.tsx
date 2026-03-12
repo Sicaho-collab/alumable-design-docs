@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { CodeBlock } from '@/components/docs/CodeBlock'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 
@@ -163,9 +164,7 @@ export default function ChatInputDoc() {
       </Section>
 
       {/* ── Usage ── */}
-      <Section title="Usage">
-        <CodeBlock code={usageCode} />
-      </Section>
+      <PlatformUsage webCode={usageCode} />
 
       {/* ── Props ── */}
       <Section title="API Reference">

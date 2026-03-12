@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { CodeBlock } from '@/components/docs/CodeBlock'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 
@@ -122,7 +123,7 @@ export default function RichTextEditorDoc() {
             />
           </div>
         </ComponentPreview>
-        <CodeBlock code={usageCode} language="tsx" />
+        <CodeBlock code={usageCode} />
       </Section>
 
       {/* ── Controlled ── */}
@@ -153,7 +154,7 @@ export default function RichTextEditorDoc() {
             )}
           </div>
         </ComponentPreview>
-        <CodeBlock code={controlledCode} language="tsx" />
+        <CodeBlock code={controlledCode} />
       </Section>
 
       {/* ── Read-only ── */}
@@ -169,7 +170,7 @@ export default function RichTextEditorDoc() {
             />
           </div>
         </ComponentPreview>
-        <CodeBlock code={readOnlyCode} language="tsx" />
+        <CodeBlock code={readOnlyCode} />
       </Section>
 
       {/* ── Character limit ── */}
@@ -186,13 +187,11 @@ export default function RichTextEditorDoc() {
             />
           </div>
         </ComponentPreview>
-        <CodeBlock code={maxLengthCode} language="tsx" />
+        <CodeBlock code={maxLengthCode} />
       </Section>
 
       {/* ── Usage ── */}
-      <Section title="Usage">
-        <CodeBlock code={usageCode} language="tsx" />
-      </Section>
+      <PlatformUsage webCode={usageCode} />
 
       {/* ── Props ── */}
       <Section title="API Reference">

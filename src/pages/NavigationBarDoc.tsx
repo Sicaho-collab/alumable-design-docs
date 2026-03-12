@@ -48,11 +48,7 @@ export default function NavigationBarDoc() {
         </div>
       </Section>
 
-      <Section
-        title="Mobile Usage"
-        description="The mobile NavigationBar uses React Native primitives and StyleSheet. Import from @alumable/ui-mobile."
-      >
-        <CodeBlock code={`import { NavigationBar } from '@alumable/ui-mobile'
+      <CodeBlock code={`import { NavigationBar } from '@alumable/ui-mobile'
 import { Ionicons } from '@expo/vector-icons'
 
 const items = [
@@ -67,17 +63,16 @@ const items = [
   activeIndex={active}
   onSelect={setActive}
 />`} />
-        <div className="mt-4 rounded-m3-sm bg-m3-surface-container-lowest border border-m3-outline-variant p-4 text-sm text-m3-on-surface-variant space-y-2">
-          <p><strong>Mobile implementation notes:</strong></p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Uses <code>StyleSheet.create()</code> only — no Tailwind</li>
-            <li>Imports tokens directly from <code>@alumable/design-tokens</code></li>
-            <li>Minimum 44pt touch targets on all items</li>
-            <li>Same props API as web (<code>items</code>, <code>activeIndex</code>, <code>onSelect</code>)</li>
-            <li>Uses <code>accessibilityRole="tab"</code> and <code>accessibilityState</code> for screen readers</li>
-          </ul>
-        </div>
-      </Section>
+      <div className="mt-4 rounded-m3-sm bg-m3-surface-container-lowest border border-m3-outline-variant p-4 text-sm text-m3-on-surface-variant space-y-2">
+        <p><strong>Mobile implementation notes:</strong></p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Uses <code>StyleSheet.create()</code> only — no Tailwind</li>
+          <li>Imports tokens directly from <code>@alumable/design-tokens</code></li>
+          <li>Minimum 44pt touch targets on all items</li>
+          <li>Same props API as web (<code>items</code>, <code>activeIndex</code>, <code>onSelect</code>)</li>
+          <li>Uses <code>accessibilityRole="tab"</code> and <code>accessibilityState</code> for screen readers</li>
+        </ul>
+      </div>
     </div>
   )
 }

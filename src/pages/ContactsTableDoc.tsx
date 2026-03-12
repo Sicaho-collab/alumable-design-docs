@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { CodeBlock } from '@/components/docs/CodeBlock'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 
@@ -99,7 +100,7 @@ export default function ContactsTableDoc() {
         <ComponentPreview title="Contacts Table" className="items-start overflow-x-auto p-4">
           <ContactsTable />
         </ComponentPreview>
-        <CodeBlock code={usageCode} language="tsx" />
+        <CodeBlock code={usageCode} />
       </Section>
 
       {/* ── Custom data ── */}
@@ -121,14 +122,11 @@ export default function ContactsTableDoc() {
             )}
           </div>
         </ComponentPreview>
-        <CodeBlock
-          language="tsx"
-          code={`<ContactsTable
+        <CodeBlock code={`<ContactsTable
   title="Team Member"
   contacts={myContacts}
   onContactSelect={(id) => console.log('toggled', id)}
-/>`}
-        />
+/>`} />
       </Section>
 
       {/* ── No animations ── */}
@@ -139,7 +137,7 @@ export default function ContactsTableDoc() {
         <ComponentPreview title="No animations" className="items-start overflow-x-auto p-4">
           <ContactsTable contacts={smallSampleContacts} enableAnimations={false} />
         </ComponentPreview>
-        <CodeBlock language="tsx" code={`<ContactsTable contacts={myContacts} enableAnimations={false} />`} />
+        <CodeBlock code={`<ContactsTable contacts={myContacts} enableAnimations={false} />`} />
       </Section>
 
       {/* ── Connection strength reference ── */}
@@ -175,9 +173,7 @@ export default function ContactsTableDoc() {
       </Section>
 
       {/* ── Usage ── */}
-      <Section title="Usage">
-        <CodeBlock code={usageCode} language="tsx" />
-      </Section>
+      <PlatformUsage webCode={usageCode} />
 
       {/* ── Component props ── */}
       <Section title="ContactsTable Props">

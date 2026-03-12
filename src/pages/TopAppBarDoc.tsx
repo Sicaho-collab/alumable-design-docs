@@ -2,7 +2,7 @@ import React from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { TopAppBar } from '@/components/ui/top-app-bar'
 import { ArrowLeft, MoreVertical, Search } from 'lucide-react'
@@ -19,7 +19,7 @@ export default function TopAppBarDoc() {
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">
           <TopAppBar title="Page Title" leading={iconBtn(<ArrowLeft className="size-6" />)} trailing={<>{iconBtn(<Search className="size-6" />)}{iconBtn(<MoreVertical className="size-6" />)}</>} />
         </ComponentPreview>
-        <CodeBlock code={`<TopAppBar title="Page Title" variant="small" leading={<BackButton />} trailing={<Actions />} />`} />
+        <PlatformUsage webCode={`<TopAppBar title="Page Title" variant="small" leading={<BackButton />} trailing={<Actions />} />`} />
       </Section>
       <Section title="Center Aligned">
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">

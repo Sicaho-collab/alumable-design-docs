@@ -1,7 +1,7 @@
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { Stepper, Step, useStepper } from '@/components/ui/stepper'
 import { Button } from '@/components/ui/button'
@@ -116,14 +116,14 @@ export default function StepperDoc() {
         <ComponentPreview>
           <HorizontalDemo />
         </ComponentPreview>
-        <CodeBlock code={usageCode} />
+        <PlatformUsage webCode={usageCode} />
       </Section>
 
       <Section title="Vertical Stepper">
         <ComponentPreview>
           <VerticalDemo />
         </ComponentPreview>
-        <CodeBlock code={`<Stepper initialStep={0} steps={steps} orientation="vertical">
+        <PlatformUsage webCode={`<Stepper initialStep={0} steps={steps} orientation="vertical">
   {/* Step children */}
 </Stepper>`} />
       </Section>

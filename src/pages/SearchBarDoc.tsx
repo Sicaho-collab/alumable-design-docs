@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { PropsTable } from '@/components/docs/PropsTable'
 import { SearchBar } from '@/components/ui/search-bar'
 import { Mic } from 'lucide-react'
@@ -17,13 +17,13 @@ export default function SearchBarDoc() {
         <ComponentPreview>
           <SearchBar value={query} onChange={setQuery} placeholder="Search…" trailing={<button className="p-1 rounded-full hover:bg-m3-on-surface/8 text-m3-on-surface-variant"><Mic className="size-5" /></button>} className="max-w-md" />
         </ComponentPreview>
-        <CodeBlock code={`<SearchBar value={query} onChange={setQuery} placeholder="Search…" />`} />
+        <PlatformUsage webCode={`<SearchBar value={query} onChange={setQuery} placeholder="Search…" />`} />
       </Section>
       <Section title="Search View">
         <ComponentPreview className="p-0 overflow-hidden rounded-m3-md">
           <SearchBar value={viewQuery} onChange={setViewQuery} variant="view" placeholder="Search…" onBack={() => setViewQuery('')} />
         </ComponentPreview>
-        <CodeBlock code={`<SearchBar variant="view" value={query} onChange={setQuery} onBack={handleBack} />`} />
+        <PlatformUsage webCode={`<SearchBar variant="view" value={query} onChange={setQuery} onBack={handleBack} />`} />
       </Section>
       <Section title="Props">
         <PropsTable props={[

@@ -3,7 +3,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 import { Heart, Share2, Bookmark, MoreVertical, Settings } from 'lucide-react'
 
@@ -175,9 +175,7 @@ export default function IconButtonDoc() {
       </Section>
 
       {/* ── Usage ── */}
-      <Section title="Usage">
-        <CodeBlock code={usageCode} language="tsx" />
-      </Section>
+      <PlatformUsage webCode={usageCode} />
 
       {/* ── Props ── */}
       <Section title="Props">

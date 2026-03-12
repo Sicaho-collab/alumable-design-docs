@@ -12,7 +12,7 @@ import { PageHeader } from '@/components/docs/PageHeader'
 import { Section } from '@/components/docs/Section'
 import { ComponentPreview } from '@/components/docs/ComponentPreview'
 import { PropsTable, type PropDef } from '@/components/docs/PropsTable'
-import { CodeBlock } from '@/components/docs/CodeBlock'
+import { PlatformUsage } from '@/components/docs/PlatformUsage'
 import { AccessibilityNote } from '@/components/docs/AccessibilityNote'
 
 const dialogProps: PropDef[] = [
@@ -215,21 +215,7 @@ function DialogDoc() {
       </Section>
 
       {/* --- Usage --- */}
-      <Section
-        title="Usage"
-        description="Import the Dialog compound components and compose them within a Dialog root."
-      >
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-sm font-medium text-m3-on-surface mb-2">Basic dialog</h3>
-            <CodeBlock code={basicUsageCode} language="tsx" />
-          </div>
-          <div>
-            <h3 className="text-sm font-medium text-m3-on-surface mb-2">Controlled confirmation dialog</h3>
-            <CodeBlock code={confirmationUsageCode} language="tsx" />
-          </div>
-        </div>
-      </Section>
+      <PlatformUsage webCode={basicUsageCode + '\n\n// Controlled confirmation dialog\n' + confirmationUsageCode} />
 
       {/* --- Props --- */}
       <Section

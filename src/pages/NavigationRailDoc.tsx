@@ -131,7 +131,7 @@ export default function NavigationRailDoc() {
             Content area
           </div>
         </ComponentPreview>
-        <CodeBlock code={basicCode} language="tsx" />
+        <CodeBlock code={basicCode} />
       </Section>
 
       {/* ── Controlled expand/collapse ── */}
@@ -159,7 +159,7 @@ export default function NavigationRailDoc() {
             </button>
           </div>
         </ComponentPreview>
-        <CodeBlock code={expandedCode} language="tsx" />
+        <CodeBlock code={expandedCode} />
       </Section>
 
       {/* ── With FAB ── */}
@@ -182,7 +182,7 @@ export default function NavigationRailDoc() {
             Content area
           </div>
         </ComponentPreview>
-        <CodeBlock code={fabCode} language="tsx" />
+        <CodeBlock code={fabCode} />
       </Section>
 
       {/* ── Alignment ── */}
@@ -202,7 +202,7 @@ export default function NavigationRailDoc() {
             Center-aligned (no menu button)
           </div>
         </ComponentPreview>
-        <CodeBlock code={alignmentCode} language="tsx" />
+        <CodeBlock code={alignmentCode} />
       </Section>
 
       {/* ── Without menu button ── */}
