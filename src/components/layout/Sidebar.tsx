@@ -51,6 +51,7 @@ interface NavItem {
   label: string
   path: string
   icon: React.ReactNode
+  platforms?: ('web' | 'mobile')[]
 }
 
 interface NavSection {
@@ -96,8 +97,7 @@ const navSections: NavSection[] = [
     title: 'Navigation',
     items: [
       { label: 'Chip', path: '/components/chip', icon: <Layers className="size-4" /> },
-      { label: 'Navigation Bar', path: '/components/navigation-bar', icon: <NavigationIcon className="size-4" /> },
-      { label: 'Navigation Rail', path: '/components/navigation-rail', icon: <LayoutPanelLeft className="size-4" /> },
+      { label: 'Navigation', path: '/components/navigation', icon: <NavigationIcon className="size-4" />, platforms: ['web', 'mobile'] },
       { label: 'Tabs', path: '/components/tabs', icon: <LayoutList className="size-4" /> },
       { label: 'Top App Bar', path: '/components/top-app-bar', icon: <PanelTop className="size-4" /> },
     ],
@@ -260,7 +260,10 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({
               }
             >
               {item.icon}
-              <span>{item.label}</span>
+              <span className="flex-1">{item.label}</span>
+              {item.platforms && item.platforms.includes('mobile') && (
+                <MonitorSmartphone className="size-3.5 text-m3-primary opacity-70" />
+              )}
             </NavLink>
           ))}
         </div>

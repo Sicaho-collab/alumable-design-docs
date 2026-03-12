@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/alumable-design-docs/',
+  base: process.env.NODE_ENV === 'production' ? '/alumable-design-docs/' : '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -15,6 +15,7 @@ export default defineConfig({
     exclude: ['@sicaho-collab/m3-design-system'],
   },
   server: {
+    port: 5175,
     watch: {
       ignored: ['!**/node_modules/@sicaho-collab/**'],
     },

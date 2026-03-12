@@ -25,8 +25,7 @@ import BottomSheetDoc from '@/pages/BottomSheetDoc'
 // Navigation
 import TabsDoc from '@/pages/TabsDoc'
 import ChipDoc from '@/pages/ChipDoc'
-import NavigationBarDoc from '@/pages/NavigationBarDoc'
-import NavigationRailDoc from '@/pages/NavigationRailDoc'
+import NavigationDoc from '@/pages/NavigationDoc'
 import TopAppBarDoc from '@/pages/TopAppBarDoc'
 
 // Selection
@@ -87,8 +86,7 @@ function App() {
           {/* Navigation */}
           <Route path="/components/tabs" element={<TabsDoc />} />
           <Route path="/components/chip" element={<ChipDoc />} />
-          <Route path="/components/navigation-bar" element={<NavigationBarDoc />} />
-          <Route path="/components/navigation-rail" element={<NavigationRailDoc />} />
+          <Route path="/components/navigation" element={<NavigationDoc />} />
           <Route path="/components/top-app-bar" element={<TopAppBarDoc />} />
 
           {/* Selection */}

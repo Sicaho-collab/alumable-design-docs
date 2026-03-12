@@ -104,6 +104,22 @@ export default function NavigationRailDoc() {
         status="stable"
       />
 
+      <Section title="Platform Availability">
+        <div className="grid grid-cols-2 gap-4 max-w-md">
+          <div className="flex items-center gap-2 rounded-m3-sm bg-m3-surface-container-low px-4 py-3">
+            <span className="text-sm font-medium text-m3-on-surface">Web</span>
+            <span className="ml-auto text-xs font-medium text-m3-primary bg-m3-primary-container px-2 py-0.5 rounded-m3-full">Available</span>
+          </div>
+          <div className="flex items-center gap-2 rounded-m3-sm bg-m3-surface-container-low px-4 py-3">
+            <span className="text-sm font-medium text-m3-on-surface">Mobile</span>
+            <span className="ml-auto text-xs font-medium text-m3-on-surface-variant bg-m3-surface-container-high px-2 py-0.5 rounded-m3-full">N/A</span>
+          </div>
+        </div>
+        <p className="mt-3 text-sm text-m3-on-surface-variant">
+          NavigationRail is a web-only component designed for tablet and desktop layouts. On mobile, use <strong>NavigationBar</strong> (bottom tab bar) instead.
+        </p>
+      </Section>
+
       {/* ── Basic ── */}
       <Section
         title="Basic"
